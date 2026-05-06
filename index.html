@@ -372,18 +372,16 @@ async function loadSettings(){
   try{
     const rows=await dbGetSettings();
     SD={};
-    (rows||[]).forEach(r=>{SD[r.key]=r.value;});
-    if(!SD['廠商'])SD['廠商']=[];
-    if(!SD['盤面配置'])SD['盤面配置']=[];
-    if(!SD['觸發方式'])SD['觸發方式']=[];
-    if(!SD['特色遊戲'])SD['特色遊戲']=[];
-    if(!SD['Hold & Spin'])SD['Hold & Spin']=[];
-    if(!SD['Base / Free Game'])SD['Base / Free Game']=[];
-    if(!SD['平台'])SD['平台']=[];
-  }catch(e){console.error('loadSettings',e);}
+    (rows||[]).forEach(r=>{SD[r.key]=r.value||[];});
+    const defaults={'廠商':[],'盤面配置':[],'觸發方式':[],'特色遊戲':[],'Hold & Spin':[],'Base / Free Game':[],'平台':[]};
+    Object.keys(defaults).forEach(k=>{if(!SD[k])SD[k]=defaults[k];});
+  }catch(e){
+    console.error('loadSettings',e);
+    SD={'廠商':[],'盤面配置':[],'觸發方式':[],'特色遊戲':[],'Hold & Spin':[],'Base / Free Game':[],'平台':[]};
+  }
 }
 async function saveSettingKey(key){
-  try{await dbUpsertSetting(key,SD[key]);}catch(e){console.error(e);}
+  try{await dbUpsertSetting(key,SD[key]);}catch(e){console.error('saveSettingKey',e);}
 }
 function openSettings(){
   document.getElementById('settings-body').innerHTML=Object.entries(SD).map(([k,vals])=>`
