@@ -317,14 +317,14 @@ hr.div{border:none;border-top:1px solid var(--border);margin:18px 0}
 <script>
 // ── CONFIG ────────────────────────────────────
 const SUPA_URL='https://gwncqtinawlhiyyfhltz.supabase.co';
-const SUPA_KEY='sb_publishable__fT984zd-i6lxBudR_W1QA_5M35JU-L';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3bmNxdGluYXdsaGl5eWZobHR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNTMxNjYsImV4cCI6MjA5MzYyOTE2Nn0.xTCOY1Z17E5dUqUogPiw523PaHNTtQlijY_bm74E9tQ';
 const CDN_NAME='dtjwhendl';
 const CDN_PRESET='y10ksrj3';
 
 // ── SUPABASE HELPERS ──────────────────────────
 const db=async(path,opt={})=>{
   const r=await fetch(`${SUPA_URL}/rest/v1/${path}`,{
-    headers:{'apikey':SUPA_KEY,'Authorization':`Bearer ${SUPA_KEY}`,'Content-Type':'application/json','Prefer':'return=representation',...(opt.headers||{})},
+    headers:{'apikey':SUPA_KEY,'Authorization':`Bearer ${SUPA_KEY}`,'Content-Type':'application/json','Prefer':'return=representation','x-client-info':'supabase-js/2.0.0',...(opt.headers||{})},
     ...opt
   });
   if(!r.ok){const e=await r.text();throw new Error(e);}
