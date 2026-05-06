@@ -1,4 +1,5 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game Database</title><style>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game Database</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,sans-serif;background:#0f1117;color:#e8eaf6;font-size:15px}
 :root{--bg:#0f1117;--bg2:#161a24;--bg3:#1e2333;--bg4:#252b3d;--border:#2e3450;--text:#e8eaf6;--muted:#8b91b0;--accent:#7c6fff;--accent2:#4fc3a1;--red:#ff6b6b;--amber:#ffa94d}
@@ -369,7 +370,7 @@ async function init(){
 // ── SETTINGS ─────────────────────────────────
 async function loadSettings(){
   try{
-    const rows=await dbGet('settings','select=key,value');
+    const rows=await dbGetSettings();
     SD={};
     (rows||[]).forEach(r=>{SD[r.key]=r.value;});
     if(!SD['廠商'])SD['廠商']=[];
@@ -382,11 +383,7 @@ async function loadSettings(){
   }catch(e){console.error('loadSettings',e);}
 }
 async function saveSettingKey(key){
-  try{
-    await db(`settings?key=eq.${encodeURIComponent(key)}`,{method:'PATCH',headers:{'Prefer':'return=representation'},body:JSON.stringify({value:SD[key]})});
-  }catch(e){
-    try{await dbPost('settings',{key,value:SD[key]});}catch(e2){console.error(e2);}
-  }
+  try{await dbUpsertSetting(key,SD[key]);}catch(e){console.error(e);}
 }
 function openSettings(){
   document.getElementById('settings-body').innerHTML=Object.entries(SD).map(([k,vals])=>`
@@ -491,7 +488,7 @@ function showPage(p){
 async function loadGames(){
   document.getElementById('ggrid').innerHTML='<div class="loading">載入中...</div>';
   try{
-    games=await dbGet('games','select=*&order=created_at.desc')||[];
+    games=await dbGet('games',{order:'created_at'})||[];
     renderGames();updateGameStats();
   }catch(e){document.getElementById('ggrid').innerHTML='<div class="empty">載入失敗，請重新整理</div>';}
 }
@@ -654,7 +651,7 @@ async function deleteGame(id){
 async function loadPlatforms(){
   document.getElementById('pgrid').innerHTML='<div class="loading">載入中...</div>';
   try{
-    platforms=await dbGet('platforms','select=*&order=created_at.desc')||[];
+    platforms=await dbGet('platforms',{order:'created_at'})||[];
     renderPlatforms();
   }catch(e){document.getElementById('pgrid').innerHTML='<div class="empty">載入失敗</div>';}
 }
