@@ -1,5 +1,6 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game Database</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,sans-serif;background:#0f1117;color:#e8eaf6;font-size:15px}
 :root{--bg:#0f1117;--bg2:#161a24;--bg3:#1e2333;--bg4:#252b3d;--border:#2e3450;--text:#e8eaf6;--muted:#8b91b0;--accent:#7c6fff;--accent2:#4fc3a1;--red:#ff6b6b;--amber:#ffa94d}
@@ -10,7 +11,7 @@ body{font-family:system-ui,sans-serif;background:#0f1117;color:#e8eaf6;font-size
 .nav-tab{padding:15px 20px;font-size:14px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none}
 .nav-tab:hover{color:var(--text)}
 .nav-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
-.gear-btn{margin-left:auto;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:15px 4px;line-height:1;transition:color .2s}
+.gear-btn{margin-left:auto;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:15px 4px;line-height:1}
 .gear-btn:hover{color:var(--accent)}
 .page{display:none;padding:22px}
 .page.active{display:block}
@@ -102,27 +103,25 @@ body{font-family:system-ui,sans-serif;background:#0f1117;color:#e8eaf6;font-size
 .ms-placeholder{font-size:14px;color:var(--muted)}
 .ms-tag{background:var(--accent);border-radius:6px;padding:3px 10px;font-size:12px;color:#fff;display:inline-flex;align-items:center;gap:4px}
 .ms-tag .rm{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:14px;padding:0;line-height:1}
-.ms-tag .rm:hover{color:#fff}
 .ms-dropdown{display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg2);border:1px solid var(--border);border-radius:10px;z-index:200;max-height:240px;overflow-y:auto;padding:6px}
 .ms-dropdown.open{display:block}
-.ms-option{padding:9px 14px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--muted);transition:background .15s,color .15s}
+.ms-option{padding:9px 14px;border-radius:8px;cursor:pointer;font-size:14px;color:var(--muted)}
 .ms-option:hover{background:var(--bg3);color:var(--text)}
 .ms-option.selected{background:var(--accent);color:#fff}
 .gpfblock{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;position:relative}
 .gpfblock .rmgp{position:absolute;top:12px;right:12px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1}
 .gpfblock .rmgp:hover{color:var(--red)}
-.img-paste-zone{background:var(--bg3);border:1px dashed var(--border);border-radius:10px;padding:14px;cursor:pointer;transition:border-color .2s;position:relative}
+.img-paste-zone{background:var(--bg3);border:1px dashed var(--border);border-radius:10px;padding:14px;cursor:pointer;position:relative}
 .img-paste-zone:hover,.img-paste-zone:focus{border-color:var(--accent);outline:none}
-.img-paste-zone.has-img{border-style:solid;border-color:var(--border);padding:0;overflow:hidden}
+.img-paste-zone.has-img{border-style:solid;padding:0;overflow:hidden}
 .img-paste-zone img{width:100%;display:block;border-radius:10px}
 .img-paste-hint{font-size:13px;color:var(--muted);text-align:center;padding:10px 0}
 .img-paste-hint span{color:var(--accent)}
 .multi-img-area{display:flex;flex-direction:column;gap:8px}
 .multi-img-item{position:relative}
 .multi-img-item .del-img{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);border:none;border-radius:6px;color:#fff;font-size:13px;padding:3px 9px;cursor:pointer}
-.multi-img-item .del-img:hover{background:var(--red)}
 .multi-img-item img{width:100%;border-radius:10px;display:block;border:1px solid var(--border)}
-.add-img-btn{background:var(--bg3);border:1px dashed var(--border);border-radius:10px;padding:12px;text-align:center;cursor:pointer;color:var(--muted);font-size:13px;transition:border-color .2s}
+.add-img-btn{background:var(--bg3);border:1px dashed var(--border);border-radius:10px;padding:12px;text-align:center;cursor:pointer;color:var(--muted);font-size:13px}
 .add-img-btn:hover{border-color:var(--accent);color:var(--accent)}
 .rank-table{width:100%;border-collapse:collapse;font-size:14px}
 .rank-table th{text-align:left;padding:8px 12px;background:var(--bg4);font-size:12px;color:var(--muted);font-weight:400}
@@ -141,11 +140,10 @@ body{font-family:system-ui,sans-serif;background:#0f1117;color:#e8eaf6;font-size
 .pf-rm:hover{color:var(--red)}
 .rank-form-table{width:100%;border-collapse:collapse;font-size:13px}
 .rank-form-table th{text-align:left;padding:6px 10px;background:var(--bg4);color:var(--muted);font-size:12px;font-weight:400}
-.rank-form-table td{padding:5px 5px}
+.rank-form-table td{padding:5px}
 .rank-form-table td:first-child{width:36px;text-align:center;color:var(--muted);font-size:13px;padding-left:10px}
 .social-form-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;position:relative}
 .social-rm{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer}
-.social-rm:hover{color:var(--red)}
 .bsec{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:18px}
 .bsec h3{font-size:14px;font-weight:500;margin-bottom:14px;color:var(--muted)}
 .bitem{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
@@ -161,8 +159,7 @@ body{font-family:system-ui,sans-serif;background:#0f1117;color:#e8eaf6;font-size
 .tadd-btn{background:var(--bg4);border:1px solid var(--border);border-radius:8px;padding:5px 12px;color:var(--accent2);font-size:13px;cursor:pointer}
 .toast{position:fixed;bottom:24px;right:24px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 18px;font-size:14px;color:var(--text);z-index:999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none}
 .toast.show{opacity:1;transform:translateY(0)}
-.loading{text-align:center;padding:48px;color:var(--muted);font-size:15px}
-.empty{text-align:center;padding:48px;color:var(--muted);font-size:15px}
+.loading,.empty{text-align:center;padding:48px;color:var(--muted);font-size:15px}
 hr.div{border:none;border-top:1px solid var(--border);margin:18px 0}
 </style></head><body>
 <div id="app">
@@ -172,7 +169,7 @@ hr.div{border:none;border-top:1px solid var(--border);margin:18px 0}
   <div class="nav-tab" onclick="showPage('platforms')">平台庫</div>
   <div class="nav-tab" onclick="showPage('backup')">備份管理</div>
   <div class="nav-tab" onclick="openAIModal()">✦ AI 建檔</div>
-  <button class="gear-btn" onclick="openSettings()" title="選項設定">⚙</button>
+  <button class="gear-btn" onclick="openSettings()">⚙</button>
 </div>
 <div class="page active" id="page-games">
   <div class="stat-single"><div class="stat-label">遊戲總數</div><div class="stat-value" id="s-total">—</div><div class="stat-sub">筆資料</div></div>
@@ -203,220 +200,144 @@ hr.div{border:none;border-top:1px solid var(--border);margin:18px 0}
 </div>
 </div>
 
-<!-- GAME DETAIL -->
-<div class="overlay" id="ov-detail">
-  <div class="modal"><div class="mh"><h3 id="dt-title">遊戲詳細</h3><button class="mc" onclick="closeOv('ov-detail')">×</button></div><div class="mb" id="dt-body"></div></div>
-</div>
+<div class="overlay" id="ov-detail"><div class="modal"><div class="mh"><h3 id="dt-title">遊戲詳細</h3><button class="mc" onclick="closeOv('ov-detail')">×</button></div><div class="mb" id="dt-body"></div></div></div>
 
-<!-- GAME FORM -->
-<div class="overlay" id="ov-gform">
-  <div class="modal"><div class="mh"><h3 id="gf-title">新增遊戲</h3><button class="mc" onclick="closeOv('ov-gform')">×</button></div>
-  <div class="mb">
-    <div class="fgrid">
-      <div class="fsec">基本資料</div>
-      <div class="fg full"><label class="flabel">遊戲名稱 *</label><input class="finput" id="f-name" placeholder="輸入遊戲名稱"></div>
-      <div class="fg"><label class="flabel">廠商</label><select class="finput" id="f-vendor"><option value="">選擇廠商</option></select></div>
-      <div class="fg"><label class="flabel">計線方式</label><select class="finput" id="f-lt"><option value="">選擇</option><option>WAY</option><option>LINE</option><option>其他</option></select></div>
-      <div class="fg"><label class="flabel">線數/WAY數</label><input class="finput" id="f-lc" placeholder="例：243 WAY"></div>
-      <div class="fg"><label class="flabel">盤面配置</label><select class="finput" id="f-board"><option value="">選擇</option></select></div>
-      <div class="fg"><label class="flabel">Max Win</label><input class="finput" id="f-maxwin" placeholder="例：5000X"></div>
-      <div class="fg"><label class="flabel">RTP %</label><input class="finput" id="f-rtp" placeholder="例：96.5"></div>
-      <div class="fg"><label class="flabel">Volatility</label><input class="finput" id="f-vol" placeholder="例：高"></div>
-      <div class="fg"><label class="flabel">Hit Rate %</label><input class="finput" id="f-hit" placeholder="例：33.3"></div>
-      <div class="fg"><label class="flabel">出現日期</label><input class="finput" id="f-date" type="date"></div>
-      <div class="fg full"><label class="flabel">觸發方式</label><div class="ms-wrap" id="ms-trigger"></div></div>
-      <div class="fg full"><label class="flabel">特色遊戲</label><div class="ms-wrap" id="ms-feature"></div></div>
-      <div class="fg full"><label class="flabel">進特色路徑</label><input class="finput" id="f-path" placeholder="輸入進特色路徑..."></div>
-      <div class="fg full"><label class="flabel">Hold &amp; Spin</label><div class="ms-wrap" id="ms-hs"></div></div>
-      <div class="fg full"><label class="flabel">Base Game</label><div class="ms-wrap" id="ms-bg"></div></div>
-      <div class="fg full"><label class="flabel">Free Game</label><div class="ms-wrap" id="ms-fg2"></div></div>
-      <div class="fsec">特色遊戲 - 文字備註</div>
-      <div class="fg full"><textarea class="finput" id="f-notes" rows="2" placeholder="輸入特色遊戲相關備註..."></textarea></div>
-      <div class="fsec">圖片（點擊後 Ctrl+V 貼上）</div>
-      <div class="fg full"><label class="flabel">遊戲截圖</label><div class="img-paste-zone" id="pz-ss" tabindex="0" onclick="focusPaste('pz-ss')" onkeydown="handlePasteKey(event,'pz-ss')"><div class="img-paste-hint">點擊後 <span>Ctrl+V</span> 貼上</div></div></div>
-      <div class="fg full"><label class="flabel">賠率表</label><div class="img-paste-zone" id="pz-pt" tabindex="0" onclick="focusPaste('pz-pt')" onkeydown="handlePasteKey(event,'pz-pt')"><div class="img-paste-hint">點擊後 <span>Ctrl+V</span> 貼上</div></div></div>
-      <div class="fg full"><label class="flabel">遊戲封面圖</label><div class="img-paste-zone" id="pz-img" tabindex="0" onclick="focusPaste('pz-img')" onkeydown="handlePasteKey(event,'pz-img')"><div class="img-paste-hint">點擊後 <span>Ctrl+V</span> 貼上</div></div></div>
-      <div class="fsec">文字說明</div>
-      <div class="fg full"><label class="flabel">遊戲簡述</label><textarea class="finput" id="f-summary" rows="3" placeholder="輸入遊戲簡述..."></textarea></div>
-      <div class="fg full"><label class="flabel">推測設計核心</label><textarea class="finput" id="f-design" rows="3" placeholder="輸入推測設計核心..."></textarea></div>
-      <div class="fg full"><label class="flabel">附件說明 / 連結</label><input class="finput" id="f-attach" placeholder="附件連結或說明..."></div>
-    </div>
-    <div style="font-size:13px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin:18px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border)">玩法詳述</div>
-    <div id="gpblocks"></div>
-    <button class="btn-outline" onclick="addGpBlock(null)" style="margin-top:6px">＋ 新增玩法區塊</button>
-    <div class="factions">
-      <button class="btn btn-ghost" onclick="closeOv('ov-gform')">取消</button>
-      <button class="btn" id="save-game-btn" onclick="saveGame()">儲存</button>
-    </div>
-  </div></div>
+<div class="overlay" id="ov-gform"><div class="modal"><div class="mh"><h3 id="gf-title">新增遊戲</h3><button class="mc" onclick="closeOv('ov-gform')">×</button></div>
+<div class="mb"><div class="fgrid">
+  <div class="fsec">基本資料</div>
+  <div class="fg full"><label class="flabel">遊戲名稱 *</label><input class="finput" id="f-name" placeholder="輸入遊戲名稱"></div>
+  <div class="fg"><label class="flabel">廠商</label><select class="finput" id="f-vendor"><option value="">選擇廠商</option></select></div>
+  <div class="fg"><label class="flabel">計線方式</label><select class="finput" id="f-lt"><option value="">選擇</option><option>WAY</option><option>LINE</option><option>其他</option></select></div>
+  <div class="fg"><label class="flabel">線數/WAY數</label><input class="finput" id="f-lc" placeholder="例：243 WAY"></div>
+  <div class="fg"><label class="flabel">盤面配置</label><select class="finput" id="f-board"><option value="">選擇</option></select></div>
+  <div class="fg"><label class="flabel">Max Win</label><input class="finput" id="f-maxwin" placeholder="例：5000X"></div>
+  <div class="fg"><label class="flabel">RTP %</label><input class="finput" id="f-rtp" placeholder="例：96.5"></div>
+  <div class="fg"><label class="flabel">Volatility</label><input class="finput" id="f-vol" placeholder="例：高"></div>
+  <div class="fg"><label class="flabel">Hit Rate %</label><input class="finput" id="f-hit" placeholder="例：33.3"></div>
+  <div class="fg"><label class="flabel">出現日期</label><input class="finput" id="f-date" type="date"></div>
+  <div class="fg full"><label class="flabel">觸發方式</label><div class="ms-wrap" id="ms-trigger"></div></div>
+  <div class="fg full"><label class="flabel">特色遊戲</label><div class="ms-wrap" id="ms-feature"></div></div>
+  <div class="fg full"><label class="flabel">進特色路徑</label><input class="finput" id="f-path" placeholder="輸入進特色路徑..."></div>
+  <div class="fg full"><label class="flabel">Hold &amp; Spin</label><div class="ms-wrap" id="ms-hs"></div></div>
+  <div class="fg full"><label class="flabel">Base Game</label><div class="ms-wrap" id="ms-bg"></div></div>
+  <div class="fg full"><label class="flabel">Free Game</label><div class="ms-wrap" id="ms-fg2"></div></div>
+  <div class="fsec">特色遊戲 - 文字備註</div>
+  <div class="fg full"><textarea class="finput" id="f-notes" rows="2" placeholder="輸入特色遊戲相關備註..."></textarea></div>
+  <div class="fsec">圖片（點擊後 Ctrl+V 貼上）</div>
+  <div class="fg full"><label class="flabel">遊戲截圖</label><div class="img-paste-zone" id="pz-ss" tabindex="0" onclick="focusPaste('pz-ss')" onkeydown="handlePasteKey(event,'pz-ss')"><div class="img-paste-hint">點擊後 <span>Ctrl+V</span> 貼上</div></div></div>
+  <div class="fg full"><label class="flabel">賠率表</label><div class="img-paste-zone" id="pz-pt" tabindex="0" onclick="focusPaste('pz-pt')" onkeydown="handlePasteKey(event,'pz-pt')"><div class="img-paste-hint">點擊後 <span>Ctrl+V</span> 貼上</div></div></div>
+  <div class="fg full"><label class="flabel">遊戲封面圖</label><div class="img-paste-zone" id="pz-img" tabindex="0" onclick="focusPaste('pz-img')" onkeydown="handlePasteKey(event,'pz-img')"><div class="img-paste-hint">點擊後 <span>Ctrl+V</span> 貼上</div></div></div>
+  <div class="fsec">文字說明</div>
+  <div class="fg full"><label class="flabel">遊戲簡述</label><textarea class="finput" id="f-summary" rows="3" placeholder="輸入遊戲簡述..."></textarea></div>
+  <div class="fg full"><label class="flabel">推測設計核心</label><textarea class="finput" id="f-design" rows="3" placeholder="輸入推測設計核心..."></textarea></div>
+  <div class="fg full"><label class="flabel">附件說明 / 連結</label><input class="finput" id="f-attach" placeholder="附件連結或說明..."></div>
 </div>
+<div style="font-size:13px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin:18px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border)">玩法詳述</div>
+<div id="gpblocks"></div>
+<button class="btn-outline" onclick="addGpBlock(null)" style="margin-top:6px">＋ 新增玩法區塊</button>
+<div class="factions"><button class="btn btn-ghost" onclick="closeOv('ov-gform')">取消</button><button class="btn" id="save-game-btn" onclick="saveGame()">儲存</button></div>
+</div></div></div>
 
-<!-- PLATFORM DETAIL -->
-<div class="overlay" id="ov-pdetail">
-  <div class="modal modal-wide"><div class="mh"><h3 id="pd-title">平台詳細</h3><button class="mc" onclick="closeOv('ov-pdetail')">×</button></div><div class="mb" id="pd-body"></div></div>
-</div>
+<div class="overlay" id="ov-pdetail"><div class="modal modal-wide"><div class="mh"><h3 id="pd-title">平台詳細</h3><button class="mc" onclick="closeOv('ov-pdetail')">×</button></div><div class="mb" id="pd-body"></div></div></div>
 
-<!-- PLATFORM FORM -->
-<div class="overlay" id="ov-pform">
-  <div class="modal modal-wide"><div class="mh"><h3 id="pf-title">新增紀錄</h3><button class="mc" onclick="closeOv('ov-pform')">×</button></div>
-  <div class="mb">
-    <div class="fgrid">
-      <div class="fsec">基本資訊</div>
-      <div class="fg"><label class="flabel">時間</label><input class="finput" id="pf-time" placeholder="例：2026年第20週"></div>
-      <div class="fg"><label class="flabel">平台名稱</label><select class="finput" id="pf-plat"><option value="">選擇平台</option></select></div>
-      <div class="fg"><label class="flabel">活動內容</label><input class="finput" id="pf-act" placeholder="輸入活動說明"></div>
-      <div class="fg full"><label class="flabel">本周總結</label><textarea class="finput" id="pf-sum" rows="2" placeholder="輸入本周總結..."></textarea></div>
-      <div class="fg full"><label class="flabel">連結遊戲</label><div class="ms-wrap" id="ms-pgames"></div></div>
-    </div>
-    <div style="font-size:13px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--border)">主要版位</div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:8px">截圖（點擊後 Ctrl+V）</div>
-    <div class="multi-img-area" id="pf-main-imgs"></div>
-    <div class="add-img-btn" onclick="addPasteZone('pf-main-imgs')" style="margin-bottom:16px">＋ 新增截圖</div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px">排名表格</div>
-    <div id="pf-main-rank"></div>
-    <div style="font-size:13px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--border)">廠商版位區塊</div>
-    <div id="pf-vendor-blocks"></div>
-    <button class="btn-outline" onclick="addVendorBlock(null)" style="margin-bottom:18px">＋ 新增廠商版位</button>
-    <div style="font-size:13px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin:4px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--border)">社群觀察</div>
-    <div id="pf-social-blocks"></div>
-    <button class="btn-outline" onclick="addSocialBlock(null)">＋ 新增社群觀察</button>
-    <div class="factions">
-      <button class="btn btn-ghost" onclick="closeOv('ov-pform')">取消</button>
-      <button class="btn" id="save-plat-btn" onclick="savePlatform()">儲存</button>
-    </div>
-  </div></div>
+<div class="overlay" id="ov-pform"><div class="modal modal-wide"><div class="mh"><h3 id="pf-title">新增紀錄</h3><button class="mc" onclick="closeOv('ov-pform')">×</button></div>
+<div class="mb"><div class="fgrid">
+  <div class="fsec">基本資訊</div>
+  <div class="fg"><label class="flabel">時間</label><input class="finput" id="pf-time" placeholder="例：2026年第20週"></div>
+  <div class="fg"><label class="flabel">平台名稱</label><select class="finput" id="pf-plat"><option value="">選擇平台</option></select></div>
+  <div class="fg"><label class="flabel">活動內容</label><input class="finput" id="pf-act" placeholder="輸入活動說明"></div>
+  <div class="fg full"><label class="flabel">本周總結</label><textarea class="finput" id="pf-sum" rows="2" placeholder="輸入本周總結..."></textarea></div>
+  <div class="fg full"><label class="flabel">連結遊戲</label><div class="ms-wrap" id="ms-pgames"></div></div>
 </div>
+<div style="font-size:13px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--border)">主要版位</div>
+<div style="font-size:12px;color:var(--muted);margin-bottom:8px">截圖（點擊後 Ctrl+V）</div>
+<div class="multi-img-area" id="pf-main-imgs"></div>
+<div class="add-img-btn" onclick="addPasteZone('pf-main-imgs')" style="margin-bottom:16px">＋ 新增截圖</div>
+<div style="font-size:12px;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px">排名表格</div>
+<div id="pf-main-rank"></div>
+<div style="font-size:13px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin:20px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--border)">廠商版位區塊</div>
+<div id="pf-vendor-blocks"></div>
+<button class="btn-outline" onclick="addVendorBlock(null)" style="margin-bottom:18px">＋ 新增廠商版位</button>
+<div style="font-size:13px;color:var(--accent2);text-transform:uppercase;letter-spacing:.5px;margin:4px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--border)">社群觀察</div>
+<div id="pf-social-blocks"></div>
+<button class="btn-outline" onclick="addSocialBlock(null)">＋ 新增社群觀察</button>
+<div class="factions"><button class="btn btn-ghost" onclick="closeOv('ov-pform')">取消</button><button class="btn" id="save-plat-btn" onclick="savePlatform()">儲存</button></div>
+</div></div></div>
 
-<!-- AI 建檔 -->
-<div class="overlay" id="ov-ai">
-  <div class="modal"><div class="mh"><h3>✦ AI 建檔</h3><button class="mc" onclick="closeOv('ov-ai')">×</button></div>
-  <div class="mb">
-    <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7">輸入遊戲名稱或貼上截圖（可同時提供），AI 會自動分析並帶入編輯表單。</div>
-    <div class="fgrid">
-      <div class="fg"><label class="flabel">遊戲名稱（選填）</label><input class="finput" id="ai-name" placeholder="例：Fortune Gems 3"></div>
-      <div class="fg"><label class="flabel">廠商（選填）</label><select class="finput" id="ai-vendor"><option value="">選擇廠商</option></select></div>
-      <div class="fg full"><label class="flabel">截圖（選填，可貼多張）</label>
-        <div id="ai-imgs" class="multi-img-area" style="margin-bottom:8px"></div>
-        <div class="add-img-btn" onclick="addPasteZone('ai-imgs')">＋ 點此後 Ctrl+V 貼上截圖</div>
-      </div>
+<div class="overlay" id="ov-ai"><div class="modal"><div class="mh"><h3>✦ AI 建檔</h3><button class="mc" onclick="closeOv('ov-ai')">×</button></div>
+<div class="mb">
+  <div style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7">輸入遊戲名稱或貼上截圖，AI 會自動分析並帶入編輯表單。</div>
+  <div class="fgrid">
+    <div class="fg"><label class="flabel">遊戲名稱（選填）</label><input class="finput" id="ai-name" placeholder="例：Fortune Gems 3"></div>
+    <div class="fg"><label class="flabel">廠商（選填）</label><select class="finput" id="ai-vendor"><option value="">選擇廠商</option></select></div>
+    <div class="fg full"><label class="flabel">截圖（選填，可貼多張）</label>
+      <div id="ai-imgs" class="multi-img-area" style="margin-bottom:8px"></div>
+      <div class="add-img-btn" onclick="addPasteZone('ai-imgs')">＋ 點此後 Ctrl+V 貼上截圖</div>
     </div>
-    <div id="ai-status" style="display:none;margin-top:16px;padding:14px 16px;background:var(--bg3);border-radius:10px;font-size:14px;color:var(--muted);text-align:center"></div>
-    <div class="factions">
-      <button class="btn btn-ghost" onclick="closeOv('ov-ai')">取消</button>
-      <button class="btn" id="ai-btn" onclick="runAI()">✦ 開始分析</button>
-    </div>
-  </div></div>
-</div>
+  </div>
+  <div id="ai-status" style="display:none;margin-top:16px;padding:14px 16px;background:var(--bg3);border-radius:10px;font-size:14px;color:var(--muted);text-align:center"></div>
+  <div class="factions"><button class="btn btn-ghost" onclick="closeOv('ov-ai')">取消</button><button class="btn" id="ai-btn" onclick="runAI()">✦ 開始分析</button></div>
+</div></div></div>
 
-<!-- SETTINGS -->
-<div class="overlay" id="ov-settings">
-  <div class="modal"><div class="mh"><h3>選項設定</h3><button class="mc" onclick="closeOv('ov-settings')">×</button></div><div class="mb" id="settings-body"></div></div>
-</div>
+<div class="overlay" id="ov-settings"><div class="modal"><div class="mh"><h3>選項設定</h3><button class="mc" onclick="closeOv('ov-settings')">×</button></div><div class="mb" id="settings-body"></div></div></div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ── CONFIG ────────────────────────────────────
 const SUPA_URL='https://gwncqtinawlhiyyfhltz.supabase.co';
 const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd3bmNxdGluYXdsaGl5eWZobHR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNTMxNjYsImV4cCI6MjA5MzYyOTE2Nn0.xTCOY1Z17E5dUqUogPiw523PaHNTtQlijY_bm74E9tQ';
 const CDN_NAME='dtjwhendl';
 const CDN_PRESET='y10ksrj3';
 
-// ── SUPABASE HELPERS ──────────────────────────
-const db=async(path,opt={})=>{
-  const r=await fetch(`${SUPA_URL}/rest/v1/${path}`,{
-    headers:{'apikey':SUPA_KEY,'Authorization':`Bearer ${SUPA_KEY}`,'Content-Type':'application/json','Prefer':'return=representation','x-client-info':'supabase-js/2.0.0',...(opt.headers||{})},
-    ...opt
-  });
-  if(!r.ok){const e=await r.text();throw new Error(e);}
-  const t=r.headers.get('content-type')||'';
-  return t.includes('json')&&r.status!==204?r.json():null;
-};
-const dbGet=(table,query='')=>db(`${table}?${query}`);
-const dbPost=(table,body)=>db(table,{method:'POST',body:JSON.stringify(body)});
-const dbPatch=(table,id,body)=>db(`${table}?id=eq.${id}`,{method:'PATCH',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)});
-const dbDelete=(table,id)=>db(`${table}?id=eq.${id}`,{method:'DELETE'});
+const supa=supabase.createClient(SUPA_URL,SUPA_KEY);
 
-// ── CLOUDINARY UPLOAD ─────────────────────────
+const dbGet=async(table)=>{const{data,error}=await supa.from(table).select('*').order('created_at',{ascending:false});if(error)throw new Error(error.message);return data||[];};
+const dbPost=async(table,body)=>{const{data,error}=await supa.from(table).insert(body).select();if(error)throw new Error(error.message);return data;};
+const dbPatch=async(table,id,body)=>{const{data,error}=await supa.from(table).update(body).eq('id',id).select();if(error)throw new Error(error.message);return data;};
+const dbDelete=async(table,id)=>{const{error}=await supa.from(table).delete().eq('id',id);if(error)throw new Error(error.message);};
+const dbGetSettings=async()=>{const{data,error}=await supa.from('settings').select('key,value');if(error)throw new Error(error.message);return data||[];};
+const dbUpsertSetting=async(key,value)=>{const{error}=await supa.from('settings').upsert({key,value},{onConflict:'key'});if(error)throw new Error(error.message);};
+
 async function uploadImg(base64){
   if(!base64||base64.startsWith('http'))return base64;
-  const fd=new FormData();
-  fd.append('file',base64);
-  fd.append('upload_preset',CDN_PRESET);
+  const fd=new FormData();fd.append('file',base64);fd.append('upload_preset',CDN_PRESET);
   const r=await fetch(`https://api.cloudinary.com/v1_1/${CDN_NAME}/image/upload`,{method:'POST',body:fd});
-  const d=await r.json();
-  if(!d.secure_url)throw new Error('圖片上傳失敗');
-  return d.secure_url;
+  const d=await r.json();if(!d.secure_url)throw new Error('圖片上傳失敗');return d.secure_url;
 }
-async function uploadMultiImgs(arr){
-  return Promise.all((arr||[]).map(u=>uploadImg(u)));
-}
+async function uploadMultiImgs(arr){return Promise.all((arr||[]).map(u=>uploadImg(u)));}
 
-// ── STATE ─────────────────────────────────────
 const emojis=['🎰','🃏','🎲','💎','🌟','🔔','🍀','🦁','🐉','🌸'];
-let editGameId=null,editPlatId=null,gpC=0,vbC=0,sbC=0,miC=0;
-let activePasteZone=null;
-let games=[],platforms=[],backups=[];
-let SD={};
+let editGameId=null,editPlatId=null,gpC=0,vbC=0,sbC=0,miC=0,activePasteZone=null;
+let games=[],platforms=[],backups=[],SD={};
 let lastBackupTime=Date.now()-25*60*60*1000;
 
-// ── INIT ──────────────────────────────────────
-async function init(){
-  await loadSettings();
-  await loadGames();
-  checkAutoBackup();
-}
+async function init(){await loadSettings();await loadGames();checkAutoBackup();}
 
-// ── SETTINGS ─────────────────────────────────
 async function loadSettings(){
   try{
     const rows=await dbGetSettings();
-    SD={};
-    (rows||[]).forEach(r=>{SD[r.key]=r.value||[];});
-    const defaults={'廠商':[],'盤面配置':[],'觸發方式':[],'特色遊戲':[],'Hold & Spin':[],'Base / Free Game':[],'平台':[]};
-    Object.keys(defaults).forEach(k=>{if(!SD[k])SD[k]=defaults[k];});
-  }catch(e){
-    console.error('loadSettings',e);
-    SD={'廠商':[],'盤面配置':[],'觸發方式':[],'特色遊戲':[],'Hold & Spin':[],'Base / Free Game':[],'平台':[]};
-  }
+    SD={};(rows||[]).forEach(r=>{SD[r.key]=r.value||[];});
+    ['廠商','盤面配置','觸發方式','特色遊戲','Hold & Spin','Base / Free Game','平台'].forEach(k=>{if(!SD[k])SD[k]=[];});
+  }catch(e){console.error('loadSettings',e);SD={'廠商':[],'盤面配置':[],'觸發方式':[],'特色遊戲':[],'Hold & Spin':[],'Base / Free Game':[],'平台':[]};}
 }
-async function saveSettingKey(key){
-  try{await dbUpsertSetting(key,SD[key]);}catch(e){console.error('saveSettingKey',e);}
-}
+async function saveSettingKey(k){try{await dbUpsertSetting(k,SD[k]);}catch(e){console.error(e);}}
+
 function openSettings(){
   document.getElementById('settings-body').innerHTML=Object.entries(SD).map(([k,vals])=>`
-    <div class="sgroup"><h3>${k}</h3><div class="tedit" id="se-${CSS.escape(k)}">
-      ${vals.map(v=>`<span class="tedititem">${v}<button class="tremove" onclick="removeTag('${k}','${v}')">×</button></span>`).join('')}
-      <input class="tadd-input" id="ti-${CSS.escape(k)}" placeholder="新增選項..." onkeydown="if(event.key==='Enter')addTag('${k}')">
+    <div class="sgroup"><h3>${k}</h3><div class="tedit">
+      ${(vals||[]).map(v=>`<span class="tedititem">${v}<button class="tremove" onclick="removeTag('${k}','${v}')">×</button></span>`).join('')}
+      <input class="tadd-input" id="ti-${k.replace(/[^a-zA-Z0-9]/g,'_')}" placeholder="新增選項..." onkeydown="if(event.key==='Enter')addTag('${k}')">
       <button class="tadd-btn" onclick="addTag('${k}')">+ 新增</button>
     </div></div>`).join('');
   document.getElementById('ov-settings').classList.add('open');
 }
-async function addTag(k){
-  const i=document.getElementById('ti-'+CSS.escape(k));
-  const v=i.value.trim();if(!v)return;
-  if(!SD[k].includes(v)){SD[k].push(v);await saveSettingKey(k);i.value='';openSettings();}
-}
-async function removeTag(k,v){
-  SD[k]=SD[k].filter(x=>x!==v);
-  await saveSettingKey(k);openSettings();
-}
+async function addTag(k){const i=document.getElementById('ti-'+k.replace(/[^a-zA-Z0-9]/g,'_'));const v=i.value.trim();if(!v)return;if(!(SD[k]||[]).includes(v)){SD[k].push(v);await saveSettingKey(k);i.value='';openSettings();}}
+async function removeTag(k,v){SD[k]=(SD[k]||[]).filter(x=>x!==v);await saveSettingKey(k);openSettings();}
 
-// ── TOAST ─────────────────────────────────────
 function showToast(msg,dur=2800){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur);}
 
-// ── AUTO BACKUP ───────────────────────────────
-function checkAutoBackup(){
-  if(Date.now()-lastBackupTime>24*60*60*1000){
-    lastBackupTime=Date.now();
-    const n=`auto_backup_${new Date().toISOString().split('T')[0]}.json`;
-    backups.unshift({name:n,size:'~KB',date:new Date().toLocaleString('zh-TW'),auto:true});
-    if(backups.length>7)backups.pop();
-    showToast('✅ 已自動備份');
-  }
-}
+function checkAutoBackup(){if(Date.now()-lastBackupTime>86400000){lastBackupTime=Date.now();backups.unshift({name:`auto_backup_${new Date().toISOString().split('T')[0]}.json`,size:'~KB',date:new Date().toLocaleString('zh-TW'),auto:true});if(backups.length>7)backups.pop();showToast('✅ 已自動備份');}}
 
-// ── IMAGE PASTE ───────────────────────────────
 function focusPaste(id){activePasteZone=id;document.getElementById(id).focus();}
 function handlePasteKey(e,id){if((e.ctrlKey||e.metaKey)&&e.key==='v')activePasteZone=id;}
 document.addEventListener('paste',e=>{
@@ -432,13 +353,10 @@ document.addEventListener('paste',e=>{
         if(zone.classList.contains('img-paste-zone')){
           zone.classList.add('has-img');zone._imgData=b64;
           zone.innerHTML=`<img src="${b64}"><button style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);border:none;border-radius:6px;color:#fff;font-size:12px;padding:3px 9px;cursor:pointer" onclick="clearPasteZone('${activePasteZone}')">✕ 清除</button>`;
-        }else if(zone.classList.contains('multi-img-area')){
-          addPastedImgToMulti(zone,b64);
-        }
+        }else if(zone.classList.contains('multi-img-area')){addPastedImgToMulti(zone,b64);}
         activePasteZone=null;
       };
-      reader.readAsDataURL(items[i].getAsFile());
-      e.preventDefault();break;
+      reader.readAsDataURL(items[i].getAsFile());e.preventDefault();break;
     }
   }
 });
@@ -450,29 +368,20 @@ function addPastedImgToMulti(area,b64){miC++;const id='miz-'+miC;const div=docum
 function getMultiImgs(cid){return[...document.querySelectorAll(`#${cid} .multi-img-item`)].map(d=>{if(d._imgData)return d._imgData;const z=d.querySelector('.img-paste-zone');return z&&z._imgData?z._imgData:'';}).filter(Boolean);}
 function renderMultiImgs(cid,imgs){const area=document.getElementById(cid);if(!area)return;area.innerHTML='';(imgs||[]).forEach(src=>{miC++;const id='miz-'+miC;const div=document.createElement('div');div.className='multi-img-item';div.id='mi-'+id;div.innerHTML=`<img src="${src}"><button class="del-img" onclick="document.getElementById('mi-${id}').remove()">✕</button>`;div._imgData=src;area.appendChild(div);});}
 
-// ── MULTISELECT ───────────────────────────────
 const msState={};
 function buildMs(cid,options,sel,key){
   msState[key]=[...(sel||[])];
   const wrap=document.getElementById(cid);if(!wrap)return;wrap.innerHTML='';
-  const disp=document.createElement('div');disp.className='ms-display';disp.id='msd-'+key;
-  disp.onclick=e=>{e.stopPropagation();toggleMsDrop(key);};
+  const disp=document.createElement('div');disp.className='ms-display';disp.id='msd-'+key;disp.onclick=e=>{e.stopPropagation();toggleMsDrop(key);};
   const drop=document.createElement('div');drop.className='ms-dropdown';drop.id='msdd-'+key;
-  (options||[]).forEach(opt=>{
-    const row=document.createElement('div');row.className='ms-option'+(msState[key].includes(opt)?' selected':'');
-    row.textContent=opt;row.onclick=e=>{e.stopPropagation();toggleMsOpt(key,opt,row);};
-    drop.appendChild(row);
-  });
+  (options||[]).forEach(opt=>{const row=document.createElement('div');row.className='ms-option'+(msState[key].includes(opt)?' selected':'');row.textContent=opt;row.onclick=e=>{e.stopPropagation();if(msState[key].includes(opt)){msState[key]=msState[key].filter(x=>x!==opt);row.classList.remove('selected');}else{msState[key].push(opt);row.classList.add('selected');}refreshMsDisp(key);};drop.appendChild(row);});
   wrap.appendChild(disp);wrap.appendChild(drop);refreshMsDisp(key);
 }
-function toggleMsOpt(k,opt,row){if(msState[k].includes(opt)){msState[k]=msState[k].filter(x=>x!==opt);row.classList.remove('selected');}else{msState[k].push(opt);row.classList.add('selected');}refreshMsDisp(k);}
-function refreshMsDisp(k){const d=document.getElementById('msd-'+k);if(!d)return;d.innerHTML='';if(!msState[k]||!msState[k].length){const p=document.createElement('span');p.className='ms-placeholder';p.textContent='點擊選擇...';d.appendChild(p);return;}msState[k].forEach(v=>{const t=document.createElement('span');t.className='ms-tag';t.innerHTML=`${v}<button class="rm" onclick="event.stopPropagation();removeMsOpt('${k}','${v}')">×</button>`;d.appendChild(t);});}
-function removeMsOpt(k,v){msState[k]=msState[k].filter(x=>x!==v);document.querySelectorAll(`#msdd-${k} .ms-option`).forEach(r=>{if(r.textContent===v)r.classList.remove('selected');});refreshMsDisp(k);}
+function refreshMsDisp(k){const d=document.getElementById('msd-'+k);if(!d)return;d.innerHTML='';if(!msState[k]||!msState[k].length){const p=document.createElement('span');p.className='ms-placeholder';p.textContent='點擊選擇...';d.appendChild(p);return;}msState[k].forEach(v=>{const t=document.createElement('span');t.className='ms-tag';t.innerHTML=`${v}<button class="rm" onclick="event.stopPropagation();msState['${k}']=msState['${k}'].filter(x=>x!=='${v}');document.querySelectorAll('#msdd-${k} .ms-option').forEach(r=>{if(r.textContent==='${v}')r.classList.remove('selected')});refreshMsDisp('${k}')">×</button>`;d.appendChild(t);});}
 function toggleMsDrop(k){const dd=document.getElementById('msdd-'+k);if(!dd)return;const was=dd.classList.contains('open');document.querySelectorAll('.ms-dropdown.open').forEach(d=>d.classList.remove('open'));if(!was)dd.classList.add('open');}
 document.addEventListener('click',()=>document.querySelectorAll('.ms-dropdown.open').forEach(d=>d.classList.remove('open')));
 function getMsVal(k){return msState[k]||[];}
 
-// ── PAGES ─────────────────────────────────────
 function showPage(p){
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));
@@ -482,13 +391,10 @@ function showPage(p){
   if(p==='backup')renderBackup();
 }
 
-// ── GAMES ─────────────────────────────────────
 async function loadGames(){
   document.getElementById('ggrid').innerHTML='<div class="loading">載入中...</div>';
-  try{
-    games=await dbGet('games',{order:'created_at'})||[];
-    renderGames();updateGameStats();
-  }catch(e){document.getElementById('ggrid').innerHTML='<div class="empty">載入失敗，請重新整理</div>';}
+  try{games=await dbGet('games');renderGames();updateGameStats();}
+  catch(e){document.getElementById('ggrid').innerHTML='<div class="empty">載入失敗，請重新整理</div>';}
 }
 function renderGames(list){
   if(!list)list=games;
@@ -505,27 +411,23 @@ function renderGames(list){
         ${m.max_win?`<span class="badge">MAX ${m.max_win}</span>`:''}
       </div></div></div>`).join('');
 }
-function filterGames(){
-  const s=document.getElementById('gsearch').value.toLowerCase(),v=document.getElementById('vfilter').value;
-  renderGames(games.filter(g=>(!s||g.name.toLowerCase().includes(s)||(g.vendor||'').toLowerCase().includes(s))&&(!v||g.vendor===v)));
-}
+function filterGames(){const s=document.getElementById('gsearch').value.toLowerCase(),v=document.getElementById('vfilter').value;renderGames(games.filter(g=>(!s||g.name.toLowerCase().includes(s)||(g.vendor||'').toLowerCase().includes(s))&&(!v||g.vendor===v)));}
 function updateGameStats(){
   document.getElementById('s-total').textContent=games.length;
   const vs=new Set(games.map(g=>g.vendor).filter(Boolean));
   const vf=document.getElementById('vfilter'),cv=vf.value;
   vf.innerHTML='<option value="">所有廠商</option>'+[...vs].map(v=>`<option${v===cv?' selected':''}>${v}</option>`).join('');
 }
-function tagsHtml(arr,cls){if(!arr||!arr.length)return'<span style="color:var(--muted);font-size:13px">—</span>';return arr.map(t=>`<span class="dtag ${cls||''}">${t}</span>`).join('');}
+function tagsHtml(arr,cls){if(!arr||!arr.length)return'<span style="color:var(--muted)">—</span>';return arr.map(t=>`<span class="dtag ${cls||''}">${t}</span>`).join('');}
 
 function openGameDetail(id){
   const g=games.find(x=>x.id===id);if(!g)return;
   document.getElementById('dt-title').textContent=g.name;
   const rtp=parseFloat(g.rtp)||0,hit=parseFloat(g.hit_rate)||0;
-  const gp=g.gameplay||[];
-  const gpHtml=gp.map(gp=>`<div class="gpblock"><div class="gpblock-title">${gp.title||'玩法區塊'}</div>
+  const gpHtml=(g.gameplay||[]).map(gp=>`<div class="gpblock"><div class="gpblock-title">${gp.title||''}</div>
     <table class="gptable"><thead><tr><th>項目</th><th>說明</th></tr></thead>
     <tbody>${(gp.rows||[]).map(r=>`<tr><td>${r.label}</td><td>${(r.content||'').replace(/\n/g,'<br>')}</td></tr>`).join('')}</tbody></table>
-    ${gp.video_url?`<div class="refvid">▶ 參考影片：<a href="${gp.video_url}" target="_blank" style="color:var(--accent)">${gp.video_url}</a></div>`:''}
+    ${gp.video_url?`<div class="refvid">▶ <a href="${gp.video_url}" target="_blank" style="color:var(--accent)">${gp.video_url}</a></div>`:''}
     ${gp.img_url?`<img class="dimg" src="${gp.img_url}">`:''}
   </div>`).join('');
   document.getElementById('dt-body').innerHTML=`
@@ -600,8 +502,8 @@ function openGameForm(id){
   editGameId=id||null;gpC=0;activePasteZone=null;
   document.getElementById('gf-title').textContent=id?'編輯遊戲':'新增遊戲';
   document.getElementById('gpblocks').innerHTML='';
-  document.getElementById('f-vendor').innerHTML='<option value="">選擇廠商</option>'+SD['廠商'].map(v=>`<option>${v}</option>`).join('');
-  document.getElementById('f-board').innerHTML='<option value="">選擇</option>'+SD['盤面配置'].map(v=>`<option>${v}</option>`).join('');
+  document.getElementById('f-vendor').innerHTML='<option value="">選擇廠商</option>'+(SD['廠商']||[]).map(v=>`<option>${v}</option>`).join('');
+  document.getElementById('f-board').innerHTML='<option value="">選擇</option>'+(SD['盤面配置']||[]).map(v=>`<option>${v}</option>`).join('');
   clearPasteZone('pz-ss');clearPasteZone('pz-pt');clearPasteZone('pz-img');
   if(id){
     const g=games.find(x=>x.id===id);if(!g)return;
@@ -626,7 +528,7 @@ function openGameForm(id){
 }
 async function saveGame(){
   const name=document.getElementById('f-name').value.trim();if(!name)return alert('請輸入遊戲名稱');
-  const btn=document.getElementById('save-game-btn');btn.disabled=true;btn.textContent='上傳圖片中...';
+  const btn=document.getElementById('save-game-btn');btn.disabled=true;btn.textContent='上傳中...';
   try{
     const ss=await uploadImg(getPasteZoneData('pz-ss'));
     const pt=await uploadImg(getPasteZoneData('pz-pt'));
@@ -639,19 +541,12 @@ async function saveGame(){
   }catch(e){showToast('❌ 儲存失敗：'+e.message);}
   finally{btn.disabled=false;btn.textContent='儲存';}
 }
-async function deleteGame(id){
-  if(!confirm('確定要刪除？'))return;
-  try{await dbDelete('games',id);await loadGames();closeOv('ov-detail');showToast('🗑 已刪除');}
-  catch(e){showToast('❌ 刪除失敗');}
-}
+async function deleteGame(id){if(!confirm('確定要刪除？'))return;try{await dbDelete('games',id);await loadGames();closeOv('ov-detail');showToast('🗑 已刪除');}catch(e){showToast('❌ 刪除失敗');}}
 
-// ── PLATFORMS ─────────────────────────────────
 async function loadPlatforms(){
   document.getElementById('pgrid').innerHTML='<div class="loading">載入中...</div>';
-  try{
-    platforms=await dbGet('platforms',{order:'created_at'})||[];
-    renderPlatforms();
-  }catch(e){document.getElementById('pgrid').innerHTML='<div class="empty">載入失敗</div>';}
+  try{platforms=await dbGet('platforms');renderPlatforms();}
+  catch(e){document.getElementById('pgrid').innerHTML='<div class="empty">載入失敗</div>';}
 }
 function buildRankTable(cid,data,showVendor){
   const c=document.getElementById(cid);if(!c)return;
@@ -659,7 +554,7 @@ function buildRankTable(cid,data,showVendor){
   let rows='';
   for(let i=0;i<10;i++){
     const r=data&&data[i]?data[i]:{name:'',vendor:''};
-    const vIn=showVendor?`<td><select class="finput rank-vendor" style="font-size:13px;padding:5px 9px"><option value="">選擇廠商</option>${SD['廠商'].map(v=>`<option${v===(r.vendor||'')?` selected`:``}>${v}</option>`).join('')}</select></td>`:'';
+    const vIn=showVendor?`<td><select class="finput rank-vendor" style="font-size:13px;padding:5px 9px"><option value="">選擇廠商</option>${(SD['廠商']||[]).map(v=>`<option${v===(r.vendor||'')?` selected`:``}>${v}</option>`).join('')}</select></td>`:'';
     rows+=`<tr><td>${i+1}</td><td><input class="finput rank-name" placeholder="—" value="${r.name||''}" style="font-size:13px;padding:5px 9px"></td>${vIn}</tr>`;
   }
   c.innerHTML=`<table class="rank-form-table"><thead><tr><th style="width:36px">#</th><th>遊戲名稱</th>${vCol}</tr></thead><tbody>${rows}</tbody></table>`;
@@ -672,7 +567,7 @@ function addVendorBlock(data){
   div.innerHTML=`<button class="pf-rm" onclick="document.getElementById('vb-${id}').remove()">×</button>
     <div class="pf-block-label">廠商版位</div>
     <div class="fg" style="margin-bottom:12px"><label class="flabel">廠商名稱</label>
-      <select class="finput vb-name"><option value="">選擇廠商</option>${SD['廠商'].map(v=>`<option${data&&data.name===v?' selected':''}>${v}</option>`).join('')}</select>
+      <select class="finput vb-name"><option value="">選擇廠商</option>${(SD['廠商']||[]).map(v=>`<option${data&&data.name===v?' selected':''}>${v}</option>`).join('')}</select>
     </div>
     <div style="font-size:12px;color:var(--muted);margin-bottom:8px">截圖（點擊後 Ctrl+V）</div>
     <div class="multi-img-area" id="vb-imgs-${id}"></div>
@@ -720,15 +615,14 @@ function filterPlatforms(){const s=document.getElementById('psearch').value.toLo
 function openPlatformDetail(id){
   const p=platforms.find(x=>x.id===id);if(!p)return;
   document.getElementById('pd-title').textContent=(p.platform||'平台')+(p.time_label?' · '+p.time_label:'');
-  const mr=p.main_rank||[];
-  const mainRankRows=mr.map((r,i)=>`<tr class="${!r.name?'empty-row':''}"><td>${i+1}</td><td>${r.name||'—'}</td><td>${r.vendor||'—'}</td></tr>`).join('');
+  const mainRankRows=(p.main_rank||[]).map((r,i)=>`<tr class="${!r.name?'empty-row':''}"><td>${i+1}</td><td>${r.name||'—'}</td><td>${r.vendor||'—'}</td></tr>`).join('');
   const vbHtml=(p.vendor_blocks||[]).map(vb=>`<div class="vendor-block"><div class="vendor-block-title">${vb.name||'廠商'}</div>
     ${vb.imgs&&vb.imgs.length?`<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">${vb.imgs.map(u=>`<img src="${u}" style="width:100%;border-radius:10px;border:1px solid var(--border)">`).join('')}</div>`:''}
     <table class="rank-table"><thead><tr><th>#</th><th>遊戲名稱</th></tr></thead>
     <tbody>${(vb.rank||[]).map((r,i)=>`<tr class="${!r.name?'empty-row':''}"><td>${i+1}</td><td>${r.name||'—'}</td></tr>`).join('')}</tbody></table></div>`).join('');
   const socialHtml=(p.social||[]).map(s=>`<div class="social-item">
     <div class="social-row"><div><div class="social-label">紀錄日期</div><div class="social-val">${s.date||'—'}</div></div>
-      <div><div class="social-label">來源平台</div><div class="social-val">${s.source||'—'}</div></div></div>
+    <div><div class="social-label">來源平台</div><div class="social-val">${s.source||'—'}</div></div></div>
     <div style="margin-bottom:8px"><div class="social-label">內容摘要</div><div class="social-val">${s.summary||'—'}</div></div>
     <div><div class="social-label">原始連結</div><div class="social-val">${s.link?`<a href="${s.link}" target="_blank" style="color:var(--accent)">${s.link}</a>`:'—'}</div></div>
   </div>`).join('');
@@ -763,7 +657,7 @@ function openPlatformForm(id){
   document.getElementById('pf-vendor-blocks').innerHTML='';
   document.getElementById('pf-social-blocks').innerHTML='';
   const pp=document.getElementById('pf-plat');
-  pp.innerHTML='<option value="">選擇平台</option>'+SD['平台'].map(v=>`<option>${v}</option>`).join('');
+  pp.innerHTML='<option value="">選擇平台</option>'+(SD['平台']||[]).map(v=>`<option>${v}</option>`).join('');
   buildMs('ms-pgames',games.map(g=>g.name),[],'pgames');
   if(id){
     const p=platforms.find(x=>x.id===id);if(!p)return;
@@ -782,7 +676,7 @@ function openPlatformForm(id){
 }
 async function savePlatform(){
   const plat=document.getElementById('pf-plat').value;if(!plat)return alert('請選擇平台');
-  const btn=document.getElementById('save-plat-btn');btn.disabled=true;btn.textContent='上傳圖片中...';
+  const btn=document.getElementById('save-plat-btn');btn.disabled=true;btn.textContent='上傳中...';
   try{
     const mainImgs=await uploadMultiImgs(getMultiImgs('pf-main-imgs'));
     const vbRaw=collectVendorBlocks();
@@ -793,45 +687,22 @@ async function savePlatform(){
   }catch(e){showToast('❌ 儲存失敗：'+e.message);}
   finally{btn.disabled=false;btn.textContent='儲存';}
 }
-async function deletePlatform(id){
-  if(!confirm('確定要刪除？'))return;
-  try{await dbDelete('platforms',id);await loadPlatforms();closeOv('ov-pdetail');showToast('🗑 已刪除');}
-  catch(e){showToast('❌ 刪除失敗');}
-}
+async function deletePlatform(id){if(!confirm('確定要刪除？'))return;try{await dbDelete('platforms',id);await loadPlatforms();closeOv('ov-pdetail');showToast('🗑 已刪除');}catch(e){showToast('❌ 刪除失敗');}}
 
-// ── BACKUP ────────────────────────────────────
-function renderBackup(){
-  document.getElementById('blist').innerHTML=backups.length?backups.map(b=>`<div class="bitem">
-    <div><div class="bitem-name">${b.name}${b.auto?` <span style="font-size:11px;color:var(--accent2);background:var(--bg4);border-radius:4px;padding:1px 7px">自動</span>`:''}</div>
-      <div class="bmeta">${b.date} · ${b.size}</div></div>
-    <button class="btn btn-ghost btn-sm">↓</button></div>`).join(''):'<div class="empty">尚無備份紀錄</div>';
-}
+function renderBackup(){document.getElementById('blist').innerHTML=backups.length?backups.map(b=>`<div class="bitem"><div><div class="bitem-name">${b.name}${b.auto?` <span style="font-size:11px;color:var(--accent2);background:var(--bg4);border-radius:4px;padding:1px 7px">自動</span>`:''}</div><div class="bmeta">${b.date} · ${b.size}</div></div><button class="btn btn-ghost btn-sm">↓</button></div>`).join(''):'<div class="empty">尚無備份紀錄</div>';}
 function doBackup(type){
-  const data=type==='json'?JSON.stringify({games,platforms},null,2):gamesToCsv();
+  const data=type==='json'?JSON.stringify({games,platforms},null,2):[['name','vendor','line_type','board_config','max_win','rtp','volatility','hit_rate'].join(','),...games.map(g=>['name','vendor','line_type','board_config','max_win','rtp','volatility','hit_rate'].map(c=>`"${(g[c]||'').toString().replace(/"/g,'""')}"`).join(','))].join('\n');
   const blob=new Blob([data],{type:'text/plain'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download=`game_db_backup_${new Date().toISOString().split('T')[0]}.${type}`;
-  a.click();
-  const n=a.download;
-  backups.unshift({name:n,size:`${Math.round(data.length/1024)} KB`,date:new Date().toLocaleString('zh-TW')});
-  if(backups.length>7)backups.pop();
-  lastBackupTime=Date.now();
-  renderBackup();showToast('✅ 備份已下載');
-}
-function gamesToCsv(){
-  const cols=['name','vendor','line_type','line_count','board_config','max_win','rtp','volatility','hit_rate','release_date','path','notes','summary'];
-  return[cols.join(','),...games.map(g=>cols.map(c=>`"${(g[c]||'').toString().replace(/"/g,'""')}"`).join(','))].join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`game_db_${new Date().toISOString().split('T')[0]}.${type}`;a.click();
+  backups.unshift({name:a.download,size:`${Math.round(data.length/1024)} KB`,date:new Date().toLocaleString('zh-TW')});
+  if(backups.length>7)backups.pop();lastBackupTime=Date.now();renderBackup();showToast('✅ 備份已下載');
 }
 
-// ── AI 建檔 ───────────────────────────────────
 function openAIModal(){
-  document.getElementById('ai-name').value='';
-  document.getElementById('ai-imgs').innerHTML='';
+  document.getElementById('ai-name').value='';document.getElementById('ai-imgs').innerHTML='';
   document.getElementById('ai-status').style.display='none';
   const btn=document.getElementById('ai-btn');btn.disabled=false;btn.textContent='✦ 開始分析';
-  const av=document.getElementById('ai-vendor');
-  av.innerHTML='<option value="">選擇廠商</option>'+SD['廠商'].map(v=>`<option>${v}</option>`).join('');
+  document.getElementById('ai-vendor').innerHTML='<option value="">選擇廠商</option>'+(SD['廠商']||[]).map(v=>`<option>${v}</option>`).join('');
   document.getElementById('ov-ai').classList.add('open');
 }
 async function runAI(){
@@ -839,55 +710,34 @@ async function runAI(){
   const vendor=document.getElementById('ai-vendor').value;
   const imgs=getMultiImgs('ai-imgs');
   if(!name&&!vendor&&!imgs.length)return alert('請至少輸入遊戲名稱、廠商或貼上截圖');
-  const btn=document.getElementById('ai-btn');
-  const status=document.getElementById('ai-status');
-  btn.disabled=true;btn.textContent='分析中...';
-  status.style.display='block';status.textContent='⏳ AI 正在分析，請稍候...';
-  const systemPrompt=`你是一個 Slot 遊戲資料庫的分析助手。根據使用者提供的資訊分析並填寫遊戲資料。截圖可能是中文或英文介面。重要規則：1.一定要回傳完整 JSON 結構，不確定的欄位填空字串或空陣列 2.只回傳 JSON，不要有任何說明文字、markdown 或 code block 3.陣列欄位的選項必須從指定清單中選擇
-JSON結構：{"name":"遊戲名稱","vendor":"廠商從清單選:${SD['廠商'].join(',')}","line_type":"WAY或LINE或其他或空","line_count":"線數","board_config":"盤面從清單選:${SD['盤面配置'].join(',')}","max_win":"如5000X","rtp":"如96.5","volatility":"高/中高/中/低","hit_rate":"命中率","trigger_method":["從清單選:${SD['觸發方式'].join(',')}"],"features":["從清單選:${SD['特色遊戲'].join(',')}"],"path":"進特色路徑","hold_spin":["從清單選:${SD['Hold & Spin'].join(',')}"],"base_game":["從清單選:${SD['Base / Free Game'].join(',')}"],"free_game":["從清單選:${SD['Base / Free Game'].join(',')}"],"notes":"特色備註","summary":"遊戲簡述2-4句","design_core":"推測設計核心2-4句","gameplay":[{"title":"玩法標題","rows":[{"label":"觸發條件","content":""},{"label":"遊戲玩法","content":""},{"label":"結束條件","content":""}],"video_url":"","img_url":""}]}`;
-  const userContent=[];
-  let intro='';
-  if(name)intro+=`遊戲名稱：${name}\n`;
-  if(vendor)intro+=`廠商：${vendor}\n`;
-  if(intro)userContent.push({type:'text',text:intro.trim()});
-  imgs.forEach(img=>{const mt=img.startsWith('data:image/png')?'image/png':img.startsWith('data:image/gif')?'image/gif':'image/jpeg';userContent.push({type:'image',source:{type:'base64',media_type:mt,data:img.split(',')[1]}});});
-  userContent.push({type:'text',text:'請根據以上資訊填寫遊戲資料，只回傳 JSON 物件。'});
-  const tryFetch=async()=>{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,system:systemPrompt,messages:[{role:'user',content:userContent}]})});
-    const d=await r.json();
-    return JSON.parse(d.content.map(c=>c.text||'').join('').replace(/```json|```/g,'').trim());
-  };
+  const btn=document.getElementById('ai-btn'),status=document.getElementById('ai-status');
+  btn.disabled=true;btn.textContent='分析中...';status.style.display='block';status.textContent='⏳ AI 正在分析，請稍候...';
+  const sp=`你是Slot遊戲資料庫分析助手。根據提供的資訊填寫遊戲資料。只回傳JSON，不要markdown。不確定的欄位填空字串或空陣列。陣列選項必須從清單中選擇。JSON結構：{"name":"","vendor":"從清單:${(SD['廠商']||[]).join(',')}","line_type":"WAY或LINE或其他或空","line_count":"","board_config":"從清單:${(SD['盤面配置']||[]).join(',')}","max_win":"","rtp":"","volatility":"","hit_rate":"","trigger_method":["從清單:${(SD['觸發方式']||[]).join(',')}"],"features":["從清單:${(SD['特色遊戲']||[]).join(',')}"],"path":"","hold_spin":["從清單:${(SD['Hold & Spin']||[]).join(',')}"],"base_game":["從清單:${(SD['Base / Free Game']||[]).join(',')}"],"free_game":["從清單:${(SD['Base / Free Game']||[]).join(',')}"],"notes":"","summary":"","design_core":"","gameplay":[{"title":"","rows":[{"label":"觸發條件","content":""},{"label":"遊戲玩法","content":""},{"label":"結束條件","content":""}],"video_url":"","img_url":""}]}`;
+  const uc=[];
+  let intro='';if(name)intro+=`遊戲名稱：${name}\n`;if(vendor)intro+=`廠商：${vendor}\n`;if(intro)uc.push({type:'text',text:intro.trim()});
+  imgs.forEach(img=>{const mt=img.startsWith('data:image/png')?'image/png':'image/jpeg';uc.push({type:'image',source:{type:'base64',media_type:mt,data:img.split(',')[1]}});});
+  uc.push({type:'text',text:'只回傳JSON。'});
+  const tryFetch=async()=>{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,system:sp,messages:[{role:'user',content:uc}]})});const d=await r.json();return JSON.parse(d.content.map(c=>c.text||'').join('').replace(/```json|```/g,'').trim());};
   try{
-    let parsed;
-    try{parsed=await tryFetch();}catch(e){status.textContent='⚠️ 重試中...';parsed=await tryFetch();}
+    let parsed;try{parsed=await tryFetch();}catch(e){status.textContent='⚠️ 重試中...';parsed=await tryFetch();}
     status.textContent='✅ 分析完成，正在開啟編輯表單...';
     setTimeout(()=>{closeOv('ov-ai');openGameFormWithData(parsed);},800);
-  }catch(err){
-    status.innerHTML=`❌ 分析失敗，請補充資訊後重試。<br><span style="font-size:12px;color:var(--muted)">${err.message}</span>`;
-    btn.disabled=false;btn.textContent='✦ 重新分析';
-  }
+  }catch(err){status.innerHTML=`❌ 分析失敗。<br><span style="font-size:12px">${err.message}</span>`;btn.disabled=false;btn.textContent='✦ 重新分析';}
 }
 function openGameFormWithData(d){
   editGameId=null;gpC=0;activePasteZone=null;
   document.getElementById('gf-title').textContent='AI 建檔 — 請確認資料';
   document.getElementById('gpblocks').innerHTML='';
-  document.getElementById('f-vendor').innerHTML='<option value="">選擇廠商</option>'+SD['廠商'].map(v=>`<option>${v}</option>`).join('');
-  document.getElementById('f-board').innerHTML='<option value="">選擇</option>'+SD['盤面配置'].map(v=>`<option>${v}</option>`).join('');
+  document.getElementById('f-vendor').innerHTML='<option value="">選擇廠商</option>'+(SD['廠商']||[]).map(v=>`<option>${v}</option>`).join('');
+  document.getElementById('f-board').innerHTML='<option value="">選擇</option>'+(SD['盤面配置']||[]).map(v=>`<option>${v}</option>`).join('');
   clearPasteZone('pz-ss');clearPasteZone('pz-pt');clearPasteZone('pz-img');
-  document.getElementById('f-name').value=d.name||'';
-  document.getElementById('f-vendor').value=d.vendor||'';
-  document.getElementById('f-lt').value=d.line_type||'';
-  document.getElementById('f-lc').value=d.line_count||'';
-  document.getElementById('f-board').value=d.board_config||'';
-  document.getElementById('f-maxwin').value=d.max_win||'';
-  document.getElementById('f-rtp').value=d.rtp||'';
-  document.getElementById('f-vol').value=d.volatility||'';
-  document.getElementById('f-hit').value=d.hit_rate||'';
-  document.getElementById('f-path').value=d.path||'';
-  document.getElementById('f-notes').value=d.notes||'';
-  document.getElementById('f-summary').value=d.summary||'';
-  document.getElementById('f-design').value=d.design_core||'';
-  document.getElementById('f-attach').value=d.attachment||'';
+  document.getElementById('f-name').value=d.name||'';document.getElementById('f-vendor').value=d.vendor||'';
+  document.getElementById('f-lt').value=d.line_type||'';document.getElementById('f-lc').value=d.line_count||'';
+  document.getElementById('f-board').value=d.board_config||'';document.getElementById('f-maxwin').value=d.max_win||'';
+  document.getElementById('f-rtp').value=d.rtp||'';document.getElementById('f-vol').value=d.volatility||'';
+  document.getElementById('f-hit').value=d.hit_rate||'';document.getElementById('f-path').value=d.path||'';
+  document.getElementById('f-notes').value=d.notes||'';document.getElementById('f-summary').value=d.summary||'';
+  document.getElementById('f-design').value=d.design_core||'';document.getElementById('f-attach').value=d.attachment||'';
   buildMs('ms-trigger',SD['觸發方式'],d.trigger_method||[],'trigger');
   buildMs('ms-feature',SD['特色遊戲'],d.features||[],'feature');
   buildMs('ms-hs',SD['Hold & Spin'],d.hold_spin||[],'hs');
